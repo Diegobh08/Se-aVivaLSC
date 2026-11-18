@@ -1,3 +1,4 @@
+
 import type { LscLessonMeta, LscSign } from '../types/lsc';
 import { LSC_SIGNS_1_TO_4 } from './lscLessons1to4';
 import { LSC_SIGNS_5_TO_8 } from './lscLessons5to8';
@@ -111,7 +112,9 @@ export const ALL_LSC_SIGNS: LscSign[] = [
   ...LSC_SIGNS_9_TO_11,
 ].map((sign) => ({
   ...sign,
-  imageUrl: sign.imageUrl ?? `/assets/signs/${sign.id}.jpg`,
+  imageUrl:
+    sign.imageUrl ??
+    `${import.meta.env.BASE_URL}assets/signs/${sign.id}.jpg`,
 }));
 
 export function getLessonMeta(lessonId: number): LscLessonMeta {
