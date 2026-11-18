@@ -1,6 +1,8 @@
 {
-  "name": "Manos LSC",
+  "name": "SeñaVivaLSC",
   "description": "Plataforma gamificada para aprender y memorizar el vocabulario completo de Lengua de Señas Colombiana (Lecciones 1 a 11) con flashcards de 4 parámetros, reto relámpago y constructor de sintaxis.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
