@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Contrast, Flame, Moon, Search, Sun, X, Zap } from 'lucide-react';
 
@@ -47,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <div className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
-      {/* Top Bar Contract: 3 zones separated by gap-8 */}
+      {/* Top Bar */}
       <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-8">
         <button
           type="button"
@@ -55,10 +56,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           className="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded"
         >
           <img
-            src="/assets/aistudio/logo_23055035.png"
+            src={`${import.meta.env.BASE_URL}assets/logo_23055035.png`}
             alt="Logo SeñaViva LSC"
             className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 dark:border-slate-700 p-0.5 shrink-0"
           />
+
           <div className="flex flex-col leading-tight text-left">
             <span>SeñaViva LSC</span>
             <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400">
@@ -73,6 +75,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           {NAV_ITEMS.map((item) => {
             const isActive = activeView === item.id;
+
             return (
               <button
                 key={item.id}
@@ -106,6 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center gap-5 py-1.5">
           {NAV_ITEMS.map((item) => {
             const isActive = activeView === item.id;
+
             return (
               <button
                 key={item.id}
@@ -124,15 +128,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Workspace Bar: Instant Global Search + Gamification Telemetry + Theme Switch */}
+      {/* Workspace Bar */}
       <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-          {/* Global Instant Search */}
+
+          {/* Global Search */}
           <div className="relative flex-1 max-w-xl">
             <Search
               aria-hidden="true"
               className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
             />
+
             <input
               type="search"
               value={searchQuery}
@@ -141,6 +147,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               aria-label="Buscador global de vocabulario LSC"
               className="w-full pl-10 pr-9 py-2 text-sm bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-600 focus:border-transparent"
             />
+
             {searchQuery && (
               <button
                 type="button"
@@ -153,9 +160,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             )}
           </div>
 
-          {/* Gamification Metrics & Theme Toggle */}
+          {/* Metrics and Theme */}
           <div className="flex flex-wrap items-center justify-between lg:justify-end gap-5 text-sm">
             <div className="flex items-center gap-5 text-slate-700 dark:text-slate-300">
+
               <div className="flex items-center gap-1.5" title="Racha diaria">
                 <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400" aria-hidden="true" />
                 <span className="font-mono font-semibold tabular-nums text-slate-900 dark:text-slate-100">
@@ -201,6 +209,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span className="text-slate-300 dark:text-slate-700 hidden sm:inline" aria-hidden="true">
                     ·
                   </span>
+
                   <button
                     type="button"
                     onClick={() => onSelectView('flashcards')}
@@ -212,7 +221,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </div>
 
+            {/* Accessibility and Theme Controls */}
             <div className="flex items-center gap-2 shrink-0">
+
               <button
                 type="button"
                 role="switch"
@@ -227,7 +238,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }`}
               >
                 <Contrast className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+
                 <span>Contraste alto señas</span>
+
                 <span
                   aria-hidden="true"
                   className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors ${
@@ -250,9 +263,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                 aria-label={darkMode ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
                 className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
               >
-                {darkMode ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+                {darkMode ? (
+                  <Sun className="w-3.5 h-3.5" />
+                ) : (
+                  <Moon className="w-3.5 h-3.5" />
+                )}
+
                 <span>{darkMode ? 'Modo claro' : 'Modo oscuro'}</span>
               </button>
+
             </div>
           </div>
         </div>
