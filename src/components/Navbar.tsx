@@ -1,6 +1,6 @@
-
-import React from 'react';
-import { Contrast, Flame, Moon, Search, Sun, X, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Contrast, Flame, Hand, Moon, Search, Sun, X, Zap } from 'lucide-react';
+import logoImg from '../assets/logo_23055035.png';
 
 export type AppView = 'bento' | 'flashcards' | 'quiz' | 'syntax' | 'dashboard' | 'community';
 
@@ -44,6 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   highContrastSigns,
   onToggleHighContrastSigns,
 }) => {
+  const [logoError, setLogoError] = useState(false);
   const masteryPct = totalCount > 0 ? Math.round((learnedCount / totalCount) * 100) : 0;
 
   return (
@@ -55,11 +56,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           onClick={() => onSelectView('bento')}
           className="inline-flex items-center gap-2.5 text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded"
         >
-          <img
-            src={`${import.meta.env.BASE_URL}assets/logo_23055035.png`}
-            alt="Logo SeñaViva LSC"
-            className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 dark:border-slate-700 p-0.5 shrink-0"
-          />
+          {!logoError ? (
+            <img
+              src={logoImg}
+              alt="Logo SeñaViva LSC"
+              onError={() => setLogoError(true)}
+              className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 dark:border-slate-700 p-0.5 shrink-0"
+            />
+          ) : (
+            <span className="w-9 h-9 rounded-lg bg-teal-50 dark:bg-teal-950 border border-teal-200 dark:border-teal-800 flex items-center justify-center shrink-0">
+              <Hand className="w-5 h-5 text-teal-600 dark:text-teal-400" aria-hidden="true" />
+            </span>
+          )}
 
           <div className="flex flex-col leading-tight text-left">
             <span>SeñaViva LSC</span>
@@ -131,7 +139,6 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Workspace Bar */}
       <div className="border-t border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-
           {/* Global Search */}
           <div className="relative flex-1 max-w-xl">
             <Search
@@ -163,7 +170,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Metrics and Theme */}
           <div className="flex flex-wrap items-center justify-between lg:justify-end gap-5 text-sm">
             <div className="flex items-center gap-5 text-slate-700 dark:text-slate-300">
-
               <div className="flex items-center gap-1.5" title="Racha diaria">
                 <Flame className="w-4 h-4 text-amber-600 dark:text-amber-400" aria-hidden="true" />
                 <span className="font-mono font-semibold tabular-nums text-slate-900 dark:text-slate-100">
@@ -223,7 +229,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {/* Accessibility and Theme Controls */}
             <div className="flex items-center gap-2 shrink-0">
-
               <button
                 type="button"
                 role="switch"
@@ -271,7 +276,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
                 <span>{darkMode ? 'Modo claro' : 'Modo oscuro'}</span>
               </button>
-
             </div>
           </div>
         </div>
