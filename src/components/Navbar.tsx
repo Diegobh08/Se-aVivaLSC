@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Contrast, Flame, Hand, Moon, Search, Sun, X, Zap } from 'lucide-react';
-import logoImg from '../assets/logo_23055035.png';
 
 export type AppView = 'bento' | 'flashcards' | 'quiz' | 'syntax' | 'dashboard' | 'community';
 
@@ -58,7 +57,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           {!logoError ? (
             <img
-              src={logoImg}
+              src="./assets/logo_23055035.png"
               alt="Logo SeñaViva LSC"
               onError={() => setLogoError(true)}
               className="w-9 h-9 rounded-lg object-contain bg-white border border-slate-200 dark:border-slate-700 p-0.5 shrink-0"
